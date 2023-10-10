@@ -1,0 +1,8 @@
+# ninja log v5
+2	227	7172981907144443	ConsoleExample_autogen/timestamp	1f0ad5a5e8a8e4cc
+2	227	7172981907144443	ConsoleExample_autogen/mocs_compilation.cpp	1f0ad5a5e8a8e4cc
+2	227	7172981907144443	D:/QT Example/Test/ConsoleExample/build-ConsoleExample-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/ConsoleExample_autogen/timestamp	1f0ad5a5e8a8e4cc
+2	227	7172981907144443	D:/QT Example/Test/ConsoleExample/build-ConsoleExample-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/ConsoleExample_autogen/mocs_compilation.cpp	1f0ad5a5e8a8e4cc
+228	314	7172981908823352	CMakeFiles/ConsoleExample.dir/ConsoleExample_autogen/mocs_compilation.cpp.obj	7ad993b1c8adb87a
+235	1699	7172981922606646	CMakeFiles/ConsoleExample.dir/main.cpp.obj	94edb1b1bf019cfd
+1702	1861	7172981924240653	ConsoleExample.exe	fb1e07dd9daa2ba8

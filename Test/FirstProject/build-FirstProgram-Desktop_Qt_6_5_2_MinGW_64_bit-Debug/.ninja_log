@@ -1,0 +1,23 @@
+# ninja log v5
+7	3065	7172911180621929	FirstProgram_autogen/timestamp	e1bf971c3691f69c
+7	3065	7172911180621929	FirstProgram_autogen/mocs_compilation.cpp	e1bf971c3691f69c
+7	3065	7172911180621929	D:/QT Example/Test/FirstProject/build-FirstProgram-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/FirstProgram_autogen/timestamp	e1bf971c3691f69c
+7	3065	7172911180621929	D:/QT Example/Test/FirstProject/build-FirstProgram-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/FirstProgram_autogen/mocs_compilation.cpp	e1bf971c3691f69c
+3066	9883	7172911255831188	CMakeFiles/FirstProgram.dir/FirstProgram_autogen/mocs_compilation.cpp.obj	dd170abc004b80d9
+3093	9923	7172911256207507	CMakeFiles/FirstProgram.dir/main.cpp.obj	e927a9bce97ae163
+3110	9946	7172911256675728	CMakeFiles/FirstProgram.dir/mainwindow.cpp.obj	e1f73b1afe19ee5b
+9947	10635	7172911263453426	FirstProgram.exe	8445c6a979191106
+15	2591	7172914774574742	FirstProgram_autogen/timestamp	e1bf971c3691f69c
+15	2591	7172914774574742	FirstProgram_autogen/mocs_compilation.cpp	e1bf971c3691f69c
+15	2591	7172914774574742	D:/QT Example/Test/FirstProject/build-FirstProgram-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/FirstProgram_autogen/timestamp	e1bf971c3691f69c
+15	2591	7172914774574742	D:/QT Example/Test/FirstProject/build-FirstProgram-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/FirstProgram_autogen/mocs_compilation.cpp	e1bf971c3691f69c
+2634	8140	7172914837004551	CMakeFiles/FirstProgram.dir/main.cpp.obj	e927a9bce97ae163
+2592	8172	7172914836994586	CMakeFiles/FirstProgram.dir/FirstProgram_autogen/mocs_compilation.cpp.obj	dd170abc004b80d9
+2620	8599	7172914841676234	CMakeFiles/FirstProgram.dir/mainwindow.cpp.obj	e1f73b1afe19ee5b
+8600	9052	7172914846098121	FirstProgram.exe	8445c6a979191106
+10	684	7172920250525007	FirstProgram_autogen/timestamp	e1bf971c3691f69c
+10	684	7172920250525007	FirstProgram_autogen/mocs_compilation.cpp	e1bf971c3691f69c
+10	684	7172920250525007	D:/QT Example/Test/FirstProject/build-FirstProgram-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/FirstProgram_autogen/timestamp	e1bf971c3691f69c
+10	684	7172920250525007	D:/QT Example/Test/FirstProject/build-FirstProgram-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/FirstProgram_autogen/mocs_compilation.cpp	e1bf971c3691f69c
+728	5328	7172920296962187	CMakeFiles/FirstProgram.dir/mainwindow.cpp.obj	e1f73b1afe19ee5b
+5329	5813	7172920301769069	FirstProgram.exe	8445c6a979191106

@@ -1,0 +1,12 @@
+# ninja log v5
+10	422	7184763479039300	SerialExample_autogen/timestamp	95a3dcfa98f933c3
+10	422	7184763479039300	SerialExample_autogen/mocs_compilation.cpp	95a3dcfa98f933c3
+0	20	0	CMakeFiles/clean.additional	baedbe210acaa455
+10	422	7184763479039300	D:/QT Example/SerialExample/build-SerialExample-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/SerialExample_autogen/timestamp	95a3dcfa98f933c3
+10	422	7184763479039300	D:/QT Example/SerialExample/build-SerialExample-Desktop_Qt_6_5_2_MinGW_64_bit-Debug/SerialExample_autogen/mocs_compilation.cpp	95a3dcfa98f933c3
+8	634	7184121415865142	build.ninja	9946dcb47e51a8e2
+1290	3582	7184756758277387	CMakeFiles/SerialExample.dir/SerialExample_autogen/mocs_compilation.cpp.obj	721fea7809097274
+21	30	0	clean	577b940aee94fbd7
+1303	3736	7184756759900306	CMakeFiles/SerialExample.dir/main.cpp.obj	abbb483498b6d66a
+446	3546	7184763510155528	CMakeFiles/SerialExample.dir/mainwindow.cpp.obj	ad372a0dbb93c6d7
+3547	3956	7184763514241832	SerialExample.exe	7fbf075fca674b8
