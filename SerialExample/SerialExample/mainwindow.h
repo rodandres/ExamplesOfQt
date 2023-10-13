@@ -27,31 +27,15 @@ private slots:
 
     void on_pushButton_2_clicked();
 
-    void serial_read();
 
     void on_pushButton_3_clicked();
 
-    void search_arduino();
 
-    void serial_close();
 
 private:
     Ui::MainWindow *ui;
-    QSerialPort *serial;
-    QString portName;
 
-    // Verificar tarjeta conectada de arduino
-    quint16 vendorId;
-    quint16 productId;
-
-    bool arduinoAvailabe;
-
-    void arduinoInit();
-
-    QByteArray serialData;
-    QString serialBuffer;
-
-    serialmanagemnet *objeto; // Declarar objeto como un puntero
+    serialmanagemnet *serialObj; // Declarar objeto como un puntero
 
 };
 #endif // MAINWINDOW_H

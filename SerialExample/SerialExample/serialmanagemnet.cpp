@@ -3,7 +3,7 @@
 
 serialmanagemnet::serialmanagemnet()
 {
-    serial = new QSerialPort(); //Incializa la variabñe serial puesta en el header
+    microController = new QSerialPort(); //Incializa la variabñe serial puesta en el header
     arduinoAvailabe = false;
     serialBuffer = "";
 }
@@ -23,26 +23,26 @@ void serialmanagemnet::search_arduino()
     //if(arduinoAvailabe) qDebug() << "Conexión con arduino exitosa"; else{qDebug() << "Conexión con arduino NO exitosa";}
     if(arduinoAvailabe){
         qDebug() << "Se encontró un arduino, iniciando conexión";
-        arduinoInit();
+        arduino_init();
     }else{
         qDebug() << "No se encontró un arduino";
     }
 }
 
 
-void serialmanagemnet::arduinoInit()
+void serialmanagemnet::arduino_init()
 {
-    serial-> setPortName(portName);
-    serial-> setBaudRate(QSerialPort::Baud9600);    //Misma que en arduino
-    serial-> setDataBits(QSerialPort::Data8);    //La longitud de la cadena de datos que se envia mediante el puerto serial
-    serial-> setParity(QSerialPort::NoParity);
-    serial-> setStopBits(QSerialPort::OneStop);
-    serial-> setFlowControl(QSerialPort::NoFlowControl);
-    serial-> open(QIODevice::ReadWrite);
+    microController-> setPortName(portName);
+    microController-> setBaudRate(QSerialPort::Baud9600);    //Misma que en arduino
+    microController-> setDataBits(QSerialPort::Data8);    //La longitud de la cadena de datos que se envia mediante el puerto serial
+    microController-> setParity(QSerialPort::NoParity);
+    microController-> setStopBits(QSerialPort::OneStop);
+    microController-> setFlowControl(QSerialPort::NoFlowControl);
+    microController-> open(QIODevice::ReadWrite);
 
-    connect(serial, SIGNAL(readyRead()),this,SLOT(serial_read()));
+    //connect(microController, SIGNAL(readyRead()),this,SLOT(serial_read()));
 
-    if (serial->isOpen()){
+    if (microController->isOpen()){
         qDebug() << "Coneción con arduino exitosa";
    //                 ui->pushButton_3->setText("Desconectar");
     }else{
@@ -58,9 +58,9 @@ void serialmanagemnet::serial_read()
     const int limiteDatosPorCategoria = 10;
 
 
-    if (serial->isReadable() && arduinoAvailabe) {
+    if (microController->isReadable() && arduinoAvailabe) {
         // Leer datos del puerto serial
-        serialData = serial->readAll();
+        serialData = microController->readAll();
         //Asegurarse que los elementos se leen correctamente
         serialBuffer += QString::fromStdString(serialData.toStdString());
 
@@ -108,12 +108,28 @@ void serialmanagemnet::serial_read()
 
 void serialmanagemnet::serial_close()
 {
+    microController->close();
     qDebug() << "Conexión terminada";
-    //ui->pushButton_3->setText("Conectar");
+}
+
+void serialmanagemnet::send_data(QString data)
+{
+    if(microController->isWritable()){
+        microController->write(data.toUtf8());
+    }else{
+        qDebug()<<"No se pueden enviar los datos";
+    }
 }
 
 void serialmanagemnet::test()
 {
-    qDebug() << "Esto se envia dese serialmanagemnt.cpp";
+    QList<QSerialPortInfo> availablePorts = QSerialPortInfo::availablePorts();
+
+    // Recorrer la lista e imprimir la descripción de cada puerto
+    foreach(const QSerialPortInfo& port, availablePorts)
+    {
+        qDebug() << "Descripción del puerto:" << port.description();
+    }
+
 }
 
