@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    serial = new QSerialPort(); //Incializa la variabñe serial puesta en el header
+    /*serial = new QSerialPort(); //Incializa la variabñe serial puesta en el header
 
     arduinoAvailabe = false;
     serialBuffer = "";
@@ -28,7 +28,10 @@ MainWindow::MainWindow(QWidget *parent)
         arduinoInit();
     }else{
         qDebug() << "No se encontró un arduino";
-    }
+    }*/
+
+    objeto = new serialmanagemnet; // Declarar "objeto" como un puntero
+    objeto->search_arduino();
 }
 
 MainWindow::~MainWindow()
@@ -38,7 +41,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::arduinoInit()
 {
-    serial-> setPortName(portName);
+    /*serial-> setPortName(portName);
     serial-> setBaudRate(QSerialPort::Baud9600);    //Misma que en arduino
     serial-> setDataBits(QSerialPort::Data8);    //La longitud de la cadena de datos que se envia mediante el puerto serial
     serial-> setParity(QSerialPort::NoParity);
@@ -54,7 +57,8 @@ void MainWindow::arduinoInit()
     }else{
         qDebug() << "No se pudo conectar con el arduino";
         ui->pushButton_3->setText("Conectar");
-    }
+    }*/
+    qDebug()<<"Arduino Init de mainwindow, NO deberia ser aqui";
 }
 
 
@@ -64,6 +68,8 @@ void MainWindow::on_pushButton_clicked()
         serial->write("1");
         qDebug() << "Se envio el 1";
     }
+
+    objeto->test();
 }
 
 
@@ -73,12 +79,11 @@ void MainWindow::on_pushButton_2_clicked()
     {serial->write("2");
         qDebug() << "Se envio el 2";
     }
-
 }
 
 void MainWindow::serial_read()
 {
-    QString data;
+    /*QString data;
     QMap<QChar, QStringList> categoryDataMap;  // Usar un QMap para categorías
     const int limiteDatosPorCategoria = 10;
 
@@ -90,7 +95,8 @@ void MainWindow::serial_read()
         serialBuffer += QString::fromStdString(serialData.toStdString());
 
         // Dividir la cadena en elementos utilizando ',' como separador
-        QStringList bufferSplit = serialBuffer.split(',', Qt::SkipEmptyParts);
+        QStringList bufferSplit = serialBuffer.split(',', Qt::SkipEmptyParts);  //ADATO, BDATO,
+
 
         // Procesar los elementos divididos
         foreach (const QString &element, bufferSplit) {
@@ -103,7 +109,6 @@ void MainWindow::serial_read()
                     QChar categoryIdentifier = element.at(0);
                     // Obtener los datos (eliminar la categoría)
                     data = element.mid(1);
-
 
 
                     // Obtener la lista de datos de la categoría
@@ -128,12 +133,15 @@ void MainWindow::serial_read()
     qDebug() << "Categoría A:" << categoryDataMap['A'];
         qDebug() << "Categoría B:" << categoryDataMap['B'];
         qDebug() << "Categoría C:" << categoryDataMap['C'];
+*/
+    qDebug() << "SerialRead desde mainwindow no deberia ser aquu";
 }
 
 
 void MainWindow::on_pushButton_3_clicked()
 {
-    if(!serial->isOpen()){
+    objeto->search_arduino();
+    /*if(!serial->isOpen()){
         search_arduino();
     }else{
         serial->close();
@@ -141,14 +149,14 @@ void MainWindow::on_pushButton_3_clicked()
             qDebug() << "Conexión terminada";
             ui->pushButton_3->setText("Conectar");
         }
-    }
+    }*/
 }
 
 void MainWindow::search_arduino()
 {
-    //Buscar informacion del arduino en cada puerto serial
+    /*//Buscar informacion del arduino en cada puerto serial
     foreach (const QSerialPortInfo &serialInfo, QSerialPortInfo::availablePorts()) {
-        qDebug()<<"Puerto: " << serialInfo.portName();
+        qDebug()<<"Puerto: " << serialInfo.portName(); //PortDescription en python
         portName = serialInfo.portName();
         qDebug() << "Vendor ID: " << serialInfo.vendorIdentifier();
         vendorId = serialInfo.vendorIdentifier();
@@ -162,7 +170,8 @@ void MainWindow::search_arduino()
         arduinoInit();
     }else{
         qDebug() << "No se encontró un arduino";
-    }
+    }*/
+    qDebug()<<"Search arduino desde mainwwindow, no deberia ser aqui";
 }
 
 void MainWindow::serial_close()

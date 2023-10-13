@@ -7,6 +7,9 @@
 #include <QSerialPortInfo>
 #include <QDebug>
 
+#include "serialmanagemnet.h"
+
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -47,5 +50,8 @@ private:
 
     QByteArray serialData;
     QString serialBuffer;
+
+    serialmanagemnet *objeto; // Declarar objeto como un puntero
+
 };
 #endif // MAINWINDOW_H
