@@ -26,6 +26,14 @@ void MainWindow::on_pushButton_2_clicked()
 {
     ui->pushButton_2->setText("AQUI");
     serialObj->test();
+
+    ui->comboBox->clear();
+
+
+    foreach (QString data, serialObj->microControllerNames) {
+        ui->comboBox->addItem(data);
+    }
+
 }
 
 
@@ -40,4 +48,24 @@ void MainWindow::on_pushButton_3_clicked() //Boton de conectar/desconectar micro
     }
 }
 
+
+
+void MainWindow::on_comboBox_activated(int index)
+{
+    int indiceSeleccionado = ui->comboBox->currentIndex(); // Obtiene el índice del elemento seleccionado
+    if (indiceSeleccionado != -1) {
+        // Si el índice seleccionado es diferente de -1, significa que hay un elemento seleccionado
+        // Ahora puedes realizar acciones basadas en el índice o acceder al valor del elemento
+        QString valorSeleccionado = ui->comboBox->itemText(indiceSeleccionado);
+        qDebug()<<valorSeleccionado;// Realiza acciones con el índice o el valor del elemento seleccionado
+    } else {
+        // No hay elemento seleccionado en el QComboBox
+    }
+}
+
+
+void MainWindow::on_pushButton_4_clicked()
+{
+    ui->comboBox->clear();
+}
 

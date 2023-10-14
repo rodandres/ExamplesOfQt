@@ -22,6 +22,7 @@ public:
     void test();
     //Public variables
     QSerialPort *microController;
+    QList<QString> microControllerNames;
 
 public slots:
     void serial_read();

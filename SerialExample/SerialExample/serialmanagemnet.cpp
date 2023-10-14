@@ -123,12 +123,18 @@ void serialmanagemnet::send_data(QString data)
 
 void serialmanagemnet::test()
 {
+    microControllerNames.clear();
     QList<QSerialPortInfo> availablePorts = QSerialPortInfo::availablePorts();
 
     // Recorrer la lista e imprimir la descripción de cada puerto
     foreach(const QSerialPortInfo& port, availablePorts)
     {
-        qDebug() << "Descripción del puerto:" << port.description();
+        //qDebug() << "Descripción del puerto:" << port.description();
+        microControllerNames.append(port.description());
+    }
+    qDebug()<<"Entro";
+    foreach(QString a, microControllerNames){
+        qDebug()<<a;
     }
 
 }
