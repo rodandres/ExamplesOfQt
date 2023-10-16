@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     serialObj = new serialmanagemnet; // Declarar "objeto" como un puntero
-    serialObj->search_arduino();
+    //serialObj->search_arduino();
 }
 
 MainWindow::~MainWindow()
@@ -25,11 +25,11 @@ void MainWindow::on_pushButton_clicked()
 void MainWindow::on_pushButton_2_clicked()
 {
     ui->pushButton_2->setText("AQUI");
-    serialObj->test();
+    serialObj->serial_close();
+    serialObj->search_port_description();
 
     ui->comboBox->clear();
-
-
+    ui->comboBox->addItem("Seleccione");
     foreach (QString data, serialObj->microControllerNames) {
         ui->comboBox->addItem(data);
     }
@@ -39,11 +39,11 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_pushButton_3_clicked() //Boton de conectar/desconectar microcontrolador
 {
-    if(serialObj->microController->isOpen()){
+   if(serialObj->microController->isOpen()){
         serialObj->serial_close();
         ui->pushButton_3->setText("Conectar");
     }else{
-     serialObj->search_arduino();
+    // serialObj->search_arduino();
         ui->pushButton_3->setText("Desconectar");
     }
 }
@@ -53,13 +53,14 @@ void MainWindow::on_pushButton_3_clicked() //Boton de conectar/desconectar micro
 void MainWindow::on_comboBox_activated(int index)
 {
     int indiceSeleccionado = ui->comboBox->currentIndex(); // Obtiene el índice del elemento seleccionado
-    if (indiceSeleccionado != -1) {
-        // Si el índice seleccionado es diferente de -1, significa que hay un elemento seleccionado
-        // Ahora puedes realizar acciones basadas en el índice o acceder al valor del elemento
+    serialObj->serial_close();
+    if (indiceSeleccionado != -1) {// Si el índice seleccionado es diferente de -1, significa que hay un elemento seleccionado
+
         QString valorSeleccionado = ui->comboBox->itemText(indiceSeleccionado);
-        qDebug()<<valorSeleccionado;// Realiza acciones con el índice o el valor del elemento seleccionado
+        serialObj->microcontroller_conecction(valorSeleccionado);
+        //qDebug()<<valorSeleccionado;// Realiza acciones con el índice o el valor del elemento seleccionado
     } else {
-        // No hay elemento seleccionado en el QComboBox
+        ui->comboBox->addItem("No se encuentran microcontroladores");
     }
 }
 

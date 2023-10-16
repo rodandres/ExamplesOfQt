@@ -4,12 +4,12 @@
 serialmanagemnet::serialmanagemnet()
 {
     microController = new QSerialPort(); //Incializa la variabñe serial puesta en el header
-    arduinoAvailabe = false;
+    microcontrollerAvailable = false;
     serialBuffer = "";
 }
-void serialmanagemnet::search_arduino()
+void serialmanagemnet::search_controller()
 {
-    qDebug()<<"Entro desde aqui";
+  /*  qDebug()<<"Entro desde aqui";
     //Buscar informacion del arduino en cada puerto serial
     foreach (const QSerialPortInfo &serialInfo, QSerialPortInfo::availablePorts()) {
         qDebug()<<"Puerto: " << serialInfo.portName(); //PortDescription en python
@@ -18,19 +18,19 @@ void serialmanagemnet::search_arduino()
         vendorId = serialInfo.vendorIdentifier();
         qDebug() << "Product ID: " << serialInfo.productIdentifier();
         productId = serialInfo.productIdentifier();
-        arduinoAvailabe = true;
+        microcontrollerAvailable = true;
     }
     //if(arduinoAvailabe) qDebug() << "Conexión con arduino exitosa"; else{qDebug() << "Conexión con arduino NO exitosa";}
-    if(arduinoAvailabe){
+    if(microcontrollerAvailable){
         qDebug() << "Se encontró un arduino, iniciando conexión";
-        arduino_init();
+        microcontroller_init();
     }else{
         qDebug() << "No se encontró un arduino";
-    }
+    }*/
 }
 
 
-void serialmanagemnet::arduino_init()
+void serialmanagemnet::microcontroller_init(QString portDescription)
 {
     microController-> setPortName(portName);
     microController-> setBaudRate(QSerialPort::Baud9600);    //Misma que en arduino
@@ -40,14 +40,12 @@ void serialmanagemnet::arduino_init()
     microController-> setFlowControl(QSerialPort::NoFlowControl);
     microController-> open(QIODevice::ReadWrite);
 
-    //connect(microController, SIGNAL(readyRead()),this,SLOT(serial_read()));
+    connect(microController, SIGNAL(readyRead()),this,SLOT(serial_read()));
 
     if (microController->isOpen()){
-        qDebug() << "Coneción con arduino exitosa";
-   //                 ui->pushButton_3->setText("Desconectar");
+        qDebug() << "Coneción con" << portDescription<<" exitosa";
     }else{
-        qDebug() << "No se pudo conectar con el arduino";
-     //   ui->pushButton_3->setText("Conectar");
+        qDebug() << "No se pudo conectar con " << portDescription;
     }
 }
 
@@ -58,7 +56,7 @@ void serialmanagemnet::serial_read()
     const int limiteDatosPorCategoria = 10;
 
 
-    if (microController->isReadable() && arduinoAvailabe) {
+    if (microController->isReadable() && microcontrollerAvailable) {
         // Leer datos del puerto serial
         serialData = microController->readAll();
         //Asegurarse que los elementos se leen correctamente
@@ -118,6 +116,43 @@ void serialmanagemnet::send_data(QString data)
         microController->write(data.toUtf8());
     }else{
         qDebug()<<"No se pueden enviar los datos";
+    }
+}
+
+void serialmanagemnet::search_port_description()
+{
+    microControllerNames.clear();
+    //QList<QSerialPortInfo> availablePorts = QSerialPortInfo::availablePorts();
+
+    foreach(const QSerialPortInfo& port, QSerialPortInfo::availablePorts())
+    {
+        microControllerNames.append(port.description());
+    }
+}
+
+void serialmanagemnet::microcontroller_conecction(QString portDescription)
+{
+    //Buscar informacion del arduino en cada puerto serial
+    foreach (const QSerialPortInfo &serialInfo, QSerialPortInfo::availablePorts()) {
+        if(serialInfo.description() == portDescription){
+            qDebug()<<"Puerto: " << serialInfo.portName(); //PortDescription en python
+            portName = serialInfo.portName();
+            qDebug() << "Vendor ID: " << serialInfo.vendorIdentifier();
+            vendorId = serialInfo.vendorIdentifier();
+            qDebug() << "Product ID: " << serialInfo.productIdentifier();
+            productId = serialInfo.productIdentifier();
+            microcontrollerAvailable = true;
+            break;
+        }else{
+            microcontrollerAvailable = false;
+        }
+    }
+    //if(arduinoAvailabe) qDebug() << "Conexión con arduino exitosa"; else{qDebug() << "Conexión con arduino NO exitosa";}
+    if(microcontrollerAvailable){
+        qDebug() << "Se encontró un " << portDescription <<", iniciando conexión";
+        microcontroller_init(portDescription);
+    }else{
+        qDebug() << "No se encontró a " << portDescription;
     }
 }
 

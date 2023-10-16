@@ -15,10 +15,12 @@ public:
 
     //Public methods
 
-    void arduino_init();
-    void search_arduino();
+    void microcontroller_init(QString portDescription);
+    void search_controller();
     void serial_close();
     void send_data(QString data);
+    void search_port_description();
+    void microcontroller_conecction(QString portDescription);
     void test();
     //Public variables
     QSerialPort *microController;
@@ -36,7 +38,7 @@ private:
     quint16 vendorId;
     quint16 productId;
 
-    bool arduinoAvailabe;
+    bool microcontrollerAvailable;
 
     QByteArray serialData;
     QString serialBuffer;
