@@ -30,14 +30,14 @@
    <widget class="QPushButton" name="pushButton_2">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>140</y>
+      <x>370</x>
+      <y>70</y>
       <width>80</width>
       <height>24</height>
      </rect>
     </property>
     <property name="text">
-     <string>Apagar</string>
+     <string>Buscar</string>
     </property>
    </widget>
    <widget class="QLCDNumber" name="lcdNumber">
@@ -53,8 +53,8 @@
    <widget class="QPushButton" name="pushButton_3">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>80</y>
+      <x>70</x>
+      <y>60</y>
       <width>80</width>
       <height>24</height>
      </rect>
@@ -68,7 +68,7 @@
      <rect>
       <x>480</x>
       <y>70</y>
-      <width>211</width>
+      <width>231</width>
       <height>24</height>
      </rect>
     </property>
@@ -89,6 +89,58 @@
     </property>
     <property name="text">
      <string>Eliminar datos</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_ruta">
+    <property name="geometry">
+     <rect>
+      <x>230</x>
+      <y>330</y>
+      <width>80</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Ruta</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_test">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>330</y>
+      <width>80</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Prueba</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="fileName">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>180</y>
+      <width>113</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>datos_recibidos</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_guardarDatos">
+    <property name="geometry">
+     <rect>
+      <x>610</x>
+      <y>230</y>
+      <width>80</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Guardar datos</string>
     </property>
    </widget>
   </widget>

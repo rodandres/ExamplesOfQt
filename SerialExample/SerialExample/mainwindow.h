@@ -6,9 +6,15 @@
 #include <QSerialPort>
 #include <QSerialPortInfo>
 #include <QDebug>
+#include <QFileDialog>
+
+//For dataManagement
+#include <QFile>
+#include <QTextStream>
+#include <QRandomGenerator>
 
 #include "serialmanagemnet.h"
-
+#include"datamanagment.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -36,10 +42,19 @@ private slots:
 
     void on_pushButton_4_clicked();
 
+    void on_btn_ruta_clicked();
+
+    void on_btn_test_clicked();
+
+    void on_btn_guardarDatos_clicked();
+
 private:
     Ui::MainWindow *ui;
 
     serialmanagemnet *serialObj; // Declarar objeto como un puntero
+    datamanagment *dataObj; // Declarar objeto como un puntero
 
+//Data management
+    QString directorioSeleccionado;
 };
 #endif // MAINWINDOW_H

@@ -1,12 +1,14 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     serialObj = new serialmanagemnet; // Declarar "objeto" como un puntero
+    dataObj = new datamanagment;
     //serialObj->search_arduino();
 }
 
@@ -68,5 +70,41 @@ void MainWindow::on_comboBox_activated(int index)
 void MainWindow::on_pushButton_4_clicked()
 {
     ui->comboBox->clear();
+}
+
+
+void MainWindow::on_btn_ruta_clicked()
+{
+    directorioSeleccionado = QFileDialog::getExistingDirectory(this, "Seleccionar Carpeta", QDir::homePath());
+    qDebug()<<directorioSeleccionado;
+}
+
+
+void MainWindow::on_btn_test_clicked()
+{
+    dataObj->pathSelection();
+    /*int a =0;
+    QFile file(directorioSeleccionado + "/prueba.csv");
+    if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QTextStream out(&file);
+        out << "Dato" << "\n";
+
+
+        while(true){
+            out << QString::number(a) << "\n";
+            a++;
+        }
+
+        file.close(); // Cierra el archivo después de escribir todos los datos.
+    } else {
+        // Manejar el error si no se pudo abrir el archivo.
+        qDebug() << "No se abrió el archivo.";
+    }*/
+}
+
+void MainWindow::on_btn_guardarDatos_clicked()
+{
+    dataObj->pathSelection();
+    dataObj->fileCreation(ui->fileName->text(),dataObj->directorioSeleccionado);
 }
 
