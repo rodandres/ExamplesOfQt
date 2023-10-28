@@ -1,6 +1,7 @@
 #ifndef SERIALMANAGEMNET_H
 #define SERIALMANAGEMNET_H
 
+#include "datamanagment.h"
 #include <QObject>
 #include <QSerialPort>
 #include <QSerialPortInfo>

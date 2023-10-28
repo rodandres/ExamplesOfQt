@@ -98,9 +98,10 @@ void serialmanagemnet::serial_read()
             }
         }
     }
-    qDebug() << "Categoría A:" << categoryDataMap['A'];
+        qDebug() << "Categoría A:" << categoryDataMap['A'];
         qDebug() << "Categoría B:" << categoryDataMap['B'];
         qDebug() << "Categoría C:" << categoryDataMap['C'];
+
 
 }
 

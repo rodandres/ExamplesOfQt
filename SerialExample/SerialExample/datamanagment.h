@@ -11,7 +11,9 @@ public:
     datamanagment();
 
     void pathSelection();
-    void fileCreation(QString fileName, QString filePath);
+    void fileCreation();
+    void dataWrite(QString data);
+    void closeFile();
 
     QString directorioSeleccionado;
     QFile dataFile;

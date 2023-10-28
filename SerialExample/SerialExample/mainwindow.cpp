@@ -82,7 +82,8 @@ void MainWindow::on_btn_ruta_clicked()
 
 void MainWindow::on_btn_test_clicked()
 {
-    dataObj->pathSelection();
+    dataObj->dataWrite(ui->fileName->text());
+    //dataObj->pathSelection();
     /*int a =0;
     QFile file(directorioSeleccionado + "/prueba.csv");
     if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
@@ -104,7 +105,6 @@ void MainWindow::on_btn_test_clicked()
 
 void MainWindow::on_btn_guardarDatos_clicked()
 {
-    dataObj->pathSelection();
-    dataObj->fileCreation(ui->fileName->text(),dataObj->directorioSeleccionado);
+    dataObj->fileCreation();
 }
 
