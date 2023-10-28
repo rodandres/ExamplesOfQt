@@ -48,6 +48,12 @@ private slots:
 
     void on_btn_guardarDatos_clicked();
 
+    void on_btnSendData_clicked();
+
+    void on_btnSearchControllers_clicked();
+
+    void on_btnDisconnect_clicked();
+
 private:
     Ui::MainWindow *ui;
 

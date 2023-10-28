@@ -17,7 +17,6 @@ public:
     //Public methods
 
     void microcontroller_init(QString portDescription);
-    void search_controller();
     void serial_close();
     void send_data(QString data);
     void search_port_description();

@@ -10,7 +10,6 @@ class datamanagment : public QObject
 public:
     datamanagment();
 
-    void pathSelection();
     void fileCreation();
     void dataWrite(QString data);
     void closeFile();
@@ -19,6 +18,7 @@ public:
     QFile dataFile;
 
 private:
+    void pathSelection();
 };
 
 
